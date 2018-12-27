@@ -1,0 +1,12 @@
+CREATE TABLE [dbo].[CreditCards](
+	[CreditCardNumberID] [int] IDENTITY(1,1) NOT NULL,
+	[CreditCardNumber] [varchar](50) 
+) ON [PRIMARY]
+
+GO
+
+INSERT INTO CreditCards (CreditCardNumber) VALUES (1234567890)
+INSERT INTO CreditCards (CreditCardNumber) VALUES (0987654321)
+INSERT INTO CreditCards (CreditCardNumber) VALUES (5555666677)
+
+

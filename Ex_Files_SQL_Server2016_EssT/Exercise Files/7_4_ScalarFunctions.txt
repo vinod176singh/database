@@ -1,0 +1,12 @@
+CREATE FUNCTION getEmail(@PersonName AS varchar(250))
+RETURNS varchar(250)
+AS
+BEGIN
+	DECLARE @emailAddress AS varchar(250)
+	
+	SELECT @emailAddress = EmailAddress
+	FROM [Application].[People]
+	WHERE [FullName] = @PersonName
+
+	RETURN @emailAddress
+END

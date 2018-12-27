@@ -1,0 +1,21 @@
+DECLARE @rawXML varchar(1000);
+DECLARE @XMLinMemory int;
+
+
+SET @rawXML =
+'<Person>
+	<FirstName>John</FirstName>
+	<LastName>Smith</LastName>
+</Person>';
+
+
+EXEC sp_xml_preparedocument @XMLinMemory OUTPUT, @rawXML;
+
+
+SELECT    *
+FROM       OPENXML (@XMLinMemory, '/Person', 2)
+           with(FirstName varchar(250),
+		LastName varchar(250)  )
+
+
+exec sp_xml_removedocument @XMLinMemory;

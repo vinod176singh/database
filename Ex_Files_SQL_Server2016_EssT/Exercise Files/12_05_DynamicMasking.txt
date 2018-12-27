@@ -1,0 +1,9 @@
+CREATE TABLE Membership  
+  (FullName varchar(100),  
+   Age int MASKED WITH (FUNCTION = 'default()'),  
+   Email varchar(100) MASKED WITH (FUNCTION = 'email()') );  
+  
+INSERT Membership VALUES   ('Martin Guidry', 21, 'martin.guidry@test.com') 
+INSERT Membership VALUES   ('John Smith', 33, 'john.smith@test.com') 
+INSERT Membership VALUES   ('Jane Smith', 75, 'jane.smith@test.com')   
+ 

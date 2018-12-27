@@ -1,0 +1,23 @@
+INSERT INTO
+dbo.xmlTest (untyped, typed, justText)
+VALUES(
+'<Person>
+	<FirstName>John</FirstName>
+
+	<LastName>Doe</LastName>
+</Person>',
+
+'<Person>
+	<FirstName>John</FirstName>
+
+	<LastName>Doe</LastName>
+</Person>',
+
+'<Person>
+	<FirstName>John</FirstName>
+
+	<LastName>Doe</LastName>
+</Person>')
+
+
+

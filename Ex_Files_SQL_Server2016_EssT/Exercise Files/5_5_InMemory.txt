@@ -1,0 +1,22 @@
+ 
+ALTER DATABASE DemoDB02 
+ADD FILEGROUP DemoDB02Memory 
+CONTAINS MEMORY_OPTIMIZED_DATA;   
+
+
+ALTER DATABASE DemoDB02
+ADD FILE (Name='DemoDB02Memory01', Filename='c:\DemoDB02Memory01') 
+TO FILEGROUP DemoDB02Memory ;
+
+GO  
+  
+USE DemoDB02
+GO  
+  
+CREATE TABLE dbo.ShoppingCart (   
+    ShoppingCartId INT IDENTITY(1,1) PRIMARY KEY NONCLUSTERED,  
+    PersonID int,   
+    NetPrice money,   
+    Tax money )
+WITH (MEMORY_OPTIMIZED=ON) 
+  

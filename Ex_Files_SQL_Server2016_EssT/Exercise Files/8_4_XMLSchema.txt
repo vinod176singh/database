@@ -1,0 +1,15 @@
+CREATE XML SCHEMA COLLECTION testSchema1 
+AS  
+'<?xml version="1.0" encoding="UTF-8" ?>
+	<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		<xs:element name="Person">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="FirstName" minOccurs="1" type="xs:string"/>
+					<xs:element name="LastName" minOccurs="1" type="xs:string"/>
+					<xs:element name="MiddleName" minOccurs="0" type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element> 
+	</xs:schema> '
+  

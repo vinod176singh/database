@@ -1,0 +1,11 @@
+DECLARE @json varchar(200)
+SET @json =  
+N'[  
+      { "FirstName": "John", "LastName": "Smith" },  
+      { "FirstName": "Jane", "LastName": "Smith" }
+]'  
+  
+SELECT *  
+FROM OPENJSON(@json)  
+WITH (FirstName nvarchar(50) '$.FirstName', 
+      LastName nvarchar(50) '$.LastName' ) 

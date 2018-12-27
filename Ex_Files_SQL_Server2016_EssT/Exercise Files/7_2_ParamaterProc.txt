@@ -1,0 +1,17 @@
+CREATE PROCEDURE highTemperatureBetweenDates
+@startDate datetime,
+@endDate datetime
+AS 
+	IF (@startDate IS NOT NULL) AND (@endDate IS NOT NULL)
+		
+		SELECT VehicleRegistration, Temperature, RecordedWhen
+		FROM  [Website].[VehicleTemperatures]
+		WHERE Temperature > 4.9
+		AND RecordedWhen >= @startDate
+		AND RecordedWhen <= @endDate
+
+	ELSE
+		SELECT 'Invalid Date'
+
+
+

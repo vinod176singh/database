@@ -1,0 +1,5 @@
+CREATE PROCEDURE highTemperature
+AS 
+SELECT VehicleRegistration, Temperature, RecordedWhen
+FROM  [Website].[VehicleTemperatures]
+WHERE Temperature > 4.9
