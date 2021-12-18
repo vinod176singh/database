@@ -1,1 +1,5 @@
 write sql code to Add N business days in given date.
+flip gender details values.if existing gender is M change to F & vice-varsa.
+join based on id column from two tables first table have three one values and one null values,second table have three one value and two null values.
+delete duplicate entry from table.
+write a query to get second highest salary from table
