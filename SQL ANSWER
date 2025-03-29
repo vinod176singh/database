@@ -50,4 +50,25 @@ df.show(5)
 df=df.withColumn('order_date',current_date()).withColumn('return_date',date_add(col('order_date'),10))
 # df.show()
 
+-----
+###join based on id column from two tables first table have three one values and one null values,second table have three one value and two null values.
+create table tab1 (id int)
+create table tab2 (id int)
+
+insert into tab1(id) values(1),(1),(1),(null),(null)
+insert into tab2(id) values(1),(1),(1),(null),(null),(null)
+
+select count(*) from tab1 inner join tab2
+on tab1.id=tab2.id
+
+select count(*) from tab1 left join tab2
+on tab1.id=tab2.id
+
+select count(*) from tab1 right join tab2
+on tab1.id=tab2.id
+
+select count(*) from tab1 full join tab2
+on tab1.id=tab2.id
+
+
 
