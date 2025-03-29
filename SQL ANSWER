@@ -6,3 +6,28 @@ df=pd.DataFrame(data,columns=cols)
 print(df.head())
 df['gender_new']=df['gender'].apply(lambda x:0 if x==1 else 1)
 print(df.head())
+
+
+
+# Initialize Spark session
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import current_date,date_add,col,collect_list,collect_set,concat_ws,when,lit
+spark = SparkSession.builder.appName('Spark Playground').getOrCreate()
+
+# Load the customers.csv dataset
+# df = spark.read.format('csv').option('header', 'true').load('/samples/customers.csv')
+data=[(1,'vinod',5000,'sales',1),(2,'vinay',6000,'sales',0),(3,'vikas',6000,'it',1)]
+cols=['id','name','salary','dept','gender']
+df=spark.createDataFrame(data,schema=cols)
+# Show the first few rows of the DataFrame
+# df.groupBy('dept').max('salary').show()
+# df.groupBy('dept').agg(max(col('salary'))).show()
+# df.groupBy('dept').agg(concat_ws('|',collect_set('name')).alias('employee_list')).show()
+df=df.withColumn('new_gender',when(col('gender')==1,lit(0)).otherwise(lit(1)))
+df.show(5)
+
+# Display the DataFrame using the display() function.
+df=df.withColumn('order_date',current_date()).withColumn('return_date',date_add(col('order_date'),10))
+# df.show()
+
+
