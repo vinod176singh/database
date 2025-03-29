@@ -1,0 +1,8 @@
+import pandas as pd
+data=[(1,'vinod',5000,'sales',1),(2,'vinay',6000,'sales',0),(3,'vikas',6000,'it',1)]
+cols=['id','name','salary','dept','gender']
+df=pd.DataFrame(data,columns=cols)
+# df=df.groupby('dept',as_index=False).agg({'name':lambda x:','.join(sorted(x))}
+print(df.head())
+df['gender_new']=df['gender'].apply(lambda x:0 if x==1 else 1)
+print(df.head())
