@@ -93,3 +93,25 @@ print(df.head(20))
 df=pd.merge(df1,df2,how='outer',left_on='id',right_on='id')
 print(df.head(20))
 
+
+# Initialize Spark session
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import current_date,date_add,col,collect_list,collect_set,concat_ws,when,lit
+spark = SparkSession.builder.appName('Spark Playground').getOrCreate()
+
+#create data-frame
+data=[(1,),(1,),(1,),(None,),(None,)]
+cols=['id']
+df1=spark.createDataFrame(data,schema=cols)
+data=[(1,),(1,),(1,),(None,),(None,),(None,)]
+df2=spark.createDataFrame(data,schema=cols)
+# apply all type of joins
+print(df1.join(df2,on=(df1.id==df2.id),how='inner').count())
+print(df1.join(df2,on=(df1.id==df2.id),how='left').count())
+print(df1.join(df2,on=(df1.id==df2.id),how='right').count())
+print(df1.join(df2,on=(df1.id==df2.id),how='outer').count())
+print(df1.join(df2,on=(df1.id==df2.id),how='left_semi').count())
+print(df1.join(df2,on=(df1.id==df2.id),how='left_anti').count())
+
+
+
