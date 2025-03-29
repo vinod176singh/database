@@ -1,18 +1,20 @@
-
+##flip gender details values.if existing gender is M change to F & vice-varsa.
 -- create
 CREATE TABLE EMPLOYEE (
   empId int,
   name varchar(15),
-  dept varchar(10)
+  dept varchar(10),
+  gender bit
 );
 
 -- insert
-INSERT INTO EMPLOYEE(empId,name,dept) VALUES (1, 'Clark', 'Sales');
-INSERT INTO EMPLOYEE(empId,name,dept) VALUES (2, 'Dave', 'Accounting');
-INSERT INTO EMPLOYEE(empId,name,dept) VALUES (3, 'Ava', 'Sales');
+INSERT INTO EMPLOYEE(empId,name,dept,gender) VALUES (1, 'Clark', 'Sales',0);
+INSERT INTO EMPLOYEE(empId,name,dept,gender) VALUES (2, 'Dave', 'Accounting',1);
+INSERT INTO EMPLOYEE(empId,name,dept,gender) VALUES (3, 'Ava', 'Sales',0);
 
 -- fetch 
-SELECT dept,string_agg(name,',') as employee_list FROM EMPLOYEE group by dept;
+-- SELECT dept,string_agg(name,',') as employee_list FROM EMPLOYEE group by dept;
+select *,case when gender=1 then 0 else 1 end as new_gender from EMPLOYEE
 GO
 
 
