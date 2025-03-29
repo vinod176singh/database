@@ -71,4 +71,25 @@ select count(*) from tab1 full join tab2
 on tab1.id=tab2.id
 
 
+import pandas as pd
+data1=[(1),(1),(1),(None),(None)]
+cols=['id']
+df1=pd.DataFrame(data=data1,columns=cols)
+data2=[(1),(1),(1),(None),(None),(None)]
+cols=['id']
+df2=pd.DataFrame(data=data2,columns=cols)
+print(df1.head(20))
+print(df2.head(20))
+
+df=pd.merge(df1,df2,how='inner',left_on='id',right_on='id')
+print(df.head(20))
+
+df=pd.merge(df1,df2,how='left',left_on='id',right_on='id')
+print(df.head(20))
+
+df=pd.merge(df1,df2,how='right',left_on='id',right_on='id')
+print(df.head(20))
+
+df=pd.merge(df1,df2,how='outer',left_on='id',right_on='id')
+print(df.head(20))
 
